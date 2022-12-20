@@ -29,6 +29,7 @@ class Preprocess():
 
     self.df = df
     self.CONTEXT_LEN = 0
+    self.RESULT_LEN = 0
 
     # Shortcut name
     self.shortcut_name = (
@@ -129,6 +130,9 @@ class Preprocess():
       self.df[[f"result_{i}" for i in range(1, 5)]].to_numpy().flatten().tolist(),
       padding="longest"
     )
+
+    # Set RESULT_LEN
+    self.RESULT_LEN = np.array(tokenized_results["input_ids"]).reshape(len(self.df), 4, -1).shape[-1]
 
     # Prepare for dataset conversion
     data = {
