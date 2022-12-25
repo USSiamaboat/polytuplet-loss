@@ -21,7 +21,7 @@ import pickle
 df = pd.read_csv("dataset/cleaned/dev.csv")
 
 # Preprocess and save dataset-ready tuples for each model
-for model_index in range(4):
+for model_index in range(3):
 	print(model_index)
 
 	# Load preprocessor
