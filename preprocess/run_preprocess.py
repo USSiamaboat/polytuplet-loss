@@ -8,8 +8,7 @@ import tensorflow as tf
 # Models
 from transformers import (AlbertTokenizer,
                           DistilBertTokenizer,
-                          RobertaTokenizer,
-                          BartTokenizer)
+                          RobertaTokenizer)
 
 import sentencepiece as spm
 

@@ -8,8 +8,7 @@ import tensorflow as tf
 # Models
 from transformers import (AlbertTokenizer,
                           DistilBertTokenizer,
-                          RobertaTokenizer,
-                          BartTokenizer)
+                          RobertaTokenizer)
 
 import sentencepiece as spm
 
@@ -20,7 +19,7 @@ class Preprocess():
     
     Args:
       df (pd.DataFrame): A DataFrame with split, context, question, answer_1, answer_2, answer_3, and answer_4 columns
-      model_index (0, 1, 2, 3): selects albert, distilbert, distilroberta, or bart models
+      model_index (0, 1, 2): selects albert, distilbert, or roberta models
     
     Returns:
       None
@@ -36,7 +35,6 @@ class Preprocess():
                            "albert-large-v2",
                            "distilbert-base-cased",
                            "distilroberta-base",
-                           "facebook/bart-base"
                          )[model_index]
 
     # Tokenizer
@@ -44,7 +42,6 @@ class Preprocess():
                        AlbertTokenizer,
                        DistilBertTokenizer,
                        RobertaTokenizer,
-                       BartTokenizer
                      )[model_index]
     self.tokenizer = self.tokenizer.from_pretrained(self.shortcut_name)
   
