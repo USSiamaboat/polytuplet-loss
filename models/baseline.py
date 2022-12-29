@@ -55,7 +55,7 @@ class BaselineModel():
     self.shortcut_name = (
                            "albert-large-v2",
                            "distilbert-base-uncased",
-                           "roberta-base",
+                           "distilroberta-base",
                          )[model_index]
 
     # Config
