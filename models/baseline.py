@@ -14,14 +14,11 @@ from transformers import (AlbertConfig, TFAlbertModel,
                           RobertaConfig, TFRobertaModel)
 
 # TPU
-try:
-  resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
-  tf.config.experimental_connect_to_cluster(resolver)
-  tf.tpu.experimental.initialize_tpu_system(resolver)
-  print("All devices: ", tf.config.list_logical_devices('TPU'))
-  strategy = tf.distribute.TPUStrategy(resolver)
-except ValueError:
-  strategy = tf.distribute.get_strategy()
+resolver = tf.distribute.cluster_resolver.TPUClusterResolver("local")
+tf.config.experimental_connect_to_cluster(resolver)
+tf.tpu.experimental.initialize_tpu_system(resolver)
+print("All devices: ", tf.config.list_logical_devices("TPU"))
+strategy = tf.distribute.TPUStrategy(resolver)
 
 class BaselineModel():
   def __init__(self, embedding_size=267, dropout=0.1, learning_rate=3e-6, initializer_range=0.02, model_index=0, seed=42, use_tpu=True):
@@ -53,9 +50,9 @@ class BaselineModel():
 
     # Shortcut name
     self.shortcut_name = (
-                           "albert-large-v2",
+                           "albert-xxlarge-v2",
                            "distilbert-base-uncased",
-                           "distilroberta-base",
+                           "roberta-large",
                          )[model_index]
 
     # Config
@@ -245,6 +242,7 @@ class BaselineModel():
     def build_model(hp):
       self.dropout = hp.Float("dropout", *dropout_range)
       self.learning_rate = hp.Float("learning_rate", *learning_rate_range, sampling="log")
+      tf.tpu.experimental.initialize_tpu_system(resolver)
       return self.build_()
     
     # Replacement function for on_epoch_end that doesn't save models

@@ -14,14 +14,11 @@ from transformers import (AlbertConfig, TFAlbertModel,
                           RobertaConfig, TFRobertaModel,)
 
 # TPU
-try:
-  resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
-  tf.config.experimental_connect_to_cluster(resolver)
-  tf.tpu.experimental.initialize_tpu_system(resolver)
-  print("All devices: ", tf.config.list_logical_devices('TPU'))
-  strategy = tf.distribute.TPUStrategy(resolver)
-except ValueError:
-  strategy = tf.distribute.get_strategy()
+resolver = tf.distribute.cluster_resolver.TPUClusterResolver("local")
+tf.config.experimental_connect_to_cluster(resolver)
+tf.tpu.experimental.initialize_tpu_system(resolver)
+print("All devices: ", tf.config.list_logical_devices("TPU"))
+strategy = tf.distribute.TPUStrategy(resolver)
 
 class SemiHardPolytupletLoss(tf.keras.Model):
   def __init__(self, alpha, m, hard_w, aggregator="sum", name="SemiHardPolytupletLoss"):
@@ -133,9 +130,9 @@ class PolytupletModel():
 
     # Shortcut name
     self.shortcut_name = (
-                           "albert-large-v2",
+                           "albert-xxlarge-v2",
                            "distilbert-base-cased",
-                           "distilroberta-base",
+                           "roberta-large",
                          )[model_index]
 
     # Config
