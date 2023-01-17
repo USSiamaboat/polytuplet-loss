@@ -39,5 +39,5 @@ for model_index in range(3):
 		"mixed_val": mixed_val
 	}
 
-	with open(f"dataset/processed/model_{model_index}_datasets.pkl", 'wb') as output:
+	with open(f"../dataset/processed/model_{model_index}_datasets.pkl", 'wb') as output:
 		pickle.dump(datasets, output, pickle.HIGHEST_PROTOCOL)
