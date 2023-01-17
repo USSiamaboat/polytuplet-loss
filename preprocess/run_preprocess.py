@@ -19,6 +19,8 @@ from preprocess import Preprocess
 import pickle
 
 # Ensure path exists
+if not os.path.exists("dataset/processed"):
+	os.makedirs("dataset/processed")
 
 # Load cleaned data
 df = pd.read_csv("dataset/cleaned/dev.csv")
