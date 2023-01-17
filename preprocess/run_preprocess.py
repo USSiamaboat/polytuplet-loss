@@ -25,7 +25,7 @@ import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 print(dir_path)
 
-with open(f".dataset/processed/model_0_datasets.pkl", 'wb') as output:
+with open(f"..dataset/processed/model_0_datasets.pkl", 'wb') as output:
 	print(output)
 
 # Preprocess and save dataset-ready tuples for each model
