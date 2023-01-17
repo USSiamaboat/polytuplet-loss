@@ -32,9 +32,9 @@ class Preprocess():
 
     # Shortcut name
     self.shortcut_name = (
-                           "albert-large-v2",
+                           "albert-xxlarge-v2",
                            "distilbert-base-cased",
-                           "distilroberta-base",
+                           "roberta-large",
                          )[model_index]
 
     # Tokenizer
