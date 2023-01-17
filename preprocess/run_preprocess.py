@@ -1,6 +1,7 @@
 # Basics
 import pandas as pd
 import numpy as np
+import os
 
 # tf
 import tensorflow as tf
@@ -17,16 +18,11 @@ from preprocess import Preprocess
 # Pickle
 import pickle
 
+# Ensure path exists
+
 # Load cleaned data
 df = pd.read_csv("dataset/cleaned/dev.csv")
 print(df.head())
-
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-print(dir_path)
-
-with open(f"../dataset/processed/model_0_datasets.pkl", 'wb') as output:
-	print(output)
 
 # Preprocess and save dataset-ready tuples for each model
 for model_index in range(3):
