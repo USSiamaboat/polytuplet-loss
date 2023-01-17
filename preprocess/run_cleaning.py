@@ -6,8 +6,8 @@ import re
 import string
 
 # File Paths
-TRAIN_FILE_PATH = "../dataset/raw_data/train.json"
-VAL_FILE_PATH = "../dataset/raw_data/val.json"
+TRAIN_FILE_PATH = "dataset/raw_data/train.json"
+VAL_FILE_PATH = "dataset/raw_data/val.json"
 
 # Load files into DataFrames
 with open(TRAIN_FILE_PATH, "rb") as f:
@@ -49,4 +49,4 @@ for i in range(4):
 df = df.drop(columns=["answers", "id_string"])
 
 # Save
-df.to_csv("../dataset/cleaned/dev.csv", index=False)
+df.to_csv("dataset/cleaned/dev.csv", index=False)
