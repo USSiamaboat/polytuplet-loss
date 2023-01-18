@@ -15,7 +15,7 @@ from transformers import (AlbertConfig, TFAlbertModel,
 
 import sentencepiece as spm
 
-from models import baseline, polytuplet
+from models.polytuplet import PolytupletModel
 
 # Pickle
 import pickle
@@ -31,7 +31,7 @@ model_name_map = {
 
 MODEL_INDEX = model_name_map[sys.argv[0]]
 
-model = polytuplet.PolytupletModel()
+model = PolytupletModel()
 
 use_mixed = {"mixed": "mixed", "sorted": ""}[sys.argv[1]]
 
