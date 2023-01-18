@@ -242,7 +242,10 @@ class BaselineModel():
     def build_model(hp):
       self.dropout = hp.Float("dropout", *dropout_range)
       self.learning_rate = hp.Float("learning_rate", *learning_rate_range, sampling="log")
+
+			# Reset TPU
       tf.tpu.experimental.initialize_tpu_system(resolver)
+			
       return self.build_()
     
     # Replacement function for on_epoch_end that doesn't save models

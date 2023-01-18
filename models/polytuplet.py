@@ -430,7 +430,10 @@ class PolytupletModel():
       self.alpha = hp.Float("alpha", *alpha_range)
       self.m = hp.Float("m", *m_range)
       self.hard_w = hp.Float("hard_w", *hard_w_range)
+
+			# Reset TPU
       tf.tpu.experimental.initialize_tpu_system(resolver)
+
       return self.build_()
     
     # Replacement function for on_epoch_end that doesn't save models
