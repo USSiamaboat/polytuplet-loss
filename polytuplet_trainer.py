@@ -29,11 +29,11 @@ model_name_map = {
 	"roberta": 2
 }
 
-MODEL_INDEX = model_name_map[sys.argv[0]]
+MODEL_INDEX = model_name_map[sys.argv[1]]
 
 model = PolytupletModel()
 
-use_mixed = {"mixed": "mixed", "sorted": ""}[sys.argv[1]]
+use_mixed = {"mixed": "mixed", "sorted": ""}[sys.argv[2]]
 
 with open(f"model_{MODEL_INDEX}_datasets.pkl", "rb") as f:
 	datasets = pickle.load(f)
