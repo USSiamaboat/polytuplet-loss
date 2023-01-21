@@ -30,9 +30,12 @@ model_name_map = {
 MODEL_INDEX = model_name_map[sys.argv[1]]
 USE_MIXED = sys.argv[2] == "mixed"
 
+print("\n\n\n\n")
+print("="*20)
 print("Running trainer with config")
 print(f"Model name {sys.argv[1]} and index {MODEL_INDEX}")
-print(f"Data is mixing is {USE_MIXED}")
+print(f"Data mixing is {USE_MIXED}")
+print("="*20)
 
 # Ensure path exists
 if not os.path.exists("dataset/processed"):
@@ -49,9 +52,9 @@ preprocessor = Preprocess(df=df, model_index=MODEL_INDEX)
 
 # Generate dataset-ready tuples
 train_data, val_data = preprocessor.get_datasets(mixed=USE_MIXED)
+train_data = tf.data.Dataset.from_tensor_slices(train_data)
+val_data = tf.data.Dataset.from_tensor_slices(val_data)
 print("Preprocessing complete")
-
-print(type(train_data))
 
 print("Building model")
 model = PolytupletModel(preprocessor.CONTEXT_LEN, preprocessor.RESULT_LEN)
