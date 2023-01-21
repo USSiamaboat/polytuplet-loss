@@ -435,14 +435,6 @@ class PolytupletModel():
       tf.tpu.experimental.initialize_tpu_system(resolver)
 
       return self.build_()
-    
-    # Replacement function for on_epoch_end that doesn't save models
-    def new_on_epoch_end(self, epoch, logs=None):
-      if not self.objective.has_value(logs):
-        return
-      current_value = self.objective.get_value(logs)
-      if self.objective.better_than(current_value, self.best_value):
-        self.best_value = current_value
 
     tuner = kt.Hyperband(
               build_model,
@@ -454,12 +446,11 @@ class PolytupletModel():
               overwrite=True
             )
 
-    with patch('keras_tuner.engine.tuner_utils.SaveBestEpoch.on_epoch_end', new_on_epoch_end):
-      tuner.search(
-        train_data.batch(self.batch_size, drop_remainder=True),
-        validation_data=validation_data.batch(self.batch_size, drop_remainder=True),
-        epochs=30,
-        callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_loss', mode="min", patience=1, restore_best_weights=True)]
-      )
+    tuner.search(
+      train_data.batch(self.batch_size, drop_remainder=True),
+      validation_data=validation_data.batch(self.batch_size, drop_remainder=True),
+      epochs=30,
+      callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_loss', mode="min", patience=1, restore_best_weights=True)]
+    )
 
     return tuner.get_best_hyperparameters()[0].values

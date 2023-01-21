@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import os
 import sys
-from mock import patch
 
 # tf
 import tensorflow as tf
@@ -30,7 +29,12 @@ model_name_map = {
 MODEL_INDEX = model_name_map[sys.argv[1]]
 USE_MIXED = sys.argv[2] == "mixed"
 
-print("\n\n\n\n")
+# for windows
+if os.name == 'nt':
+	os.system('cls')
+else:
+	os.system('clear')
+
 print("="*20)
 print("Running trainer with config")
 print(f"Model name {sys.argv[1]} and index {MODEL_INDEX}")
