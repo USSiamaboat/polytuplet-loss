@@ -70,10 +70,6 @@ model = BaselineModel(preprocessor.RESULT_LEN)
 model.tune_hyperparams(
   train_data=train_data,
   validation_data=val_data,
-  dropout_range=(0.0, 0.3),
-  learning_rate_range=(1e-7, 1e-5),
-  final_learning_rate_range=(1e-7, 1e-5),
-  alpha_range=(0.0, 10.0),
-  m_range=(0.0, 2.0),
-  hard_w_range=(0.0, 1.0)
+  dropout_range=(0.0, 0.5),
+  learning_rate_range=(1e-7, 1e-5)
 )
