@@ -35,19 +35,19 @@ if not os.path.exists("dataset/processed"):
 	os.makedirs("dataset/processed")
 
 # Load cleaned data
+print("Loading data...")
 df = pd.read_csv("dataset/cleaned/dev.csv")
-print(df.head())
+print("Data loaded")
 
-# Preprocess and save dataset-ready tuples for each model
-for model_index in range(3):
-	print(model_index)
+# Load preprocessor
+print("Preprocessing...")
+preprocessor = Preprocess(df=df, model_index=MODEL_INDEX)
 
-	# Load preprocessor
-	preprocessor = Preprocess(df=df, model_index=model_index)
+# Generate dataset-ready tuples
+train_data, val_data = preprocessor.get_datasets(mixed=USE_MIXED)
+print("Preprocessing complete")
 
-	# Generate dataset-ready tuples
-	train_data, val_data = preprocessor.get_datasets(mixed=USE_MIXED)
-
+print("Building model")
 model = PolytupletModel(preprocessor.CONTEXT_LEN, preprocessor.RESULT_LEN)
 
 model.tune_hyperparams(
