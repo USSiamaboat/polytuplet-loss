@@ -42,7 +42,7 @@ for model_index in range(3):
 		"train": train,
 		"val": val,
 		"mixed_train": mixed_train,
-		"mixed_val": mixed_val
+		"mixed_val": mixed_val,
 	}
 
 	with open(f"dataset/processed/model_{model_index}_datasets.pkl", 'wb') as output:

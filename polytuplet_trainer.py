@@ -15,30 +15,40 @@ from transformers import (AlbertConfig, TFAlbertModel,
 
 import sentencepiece as spm
 
+from preprocess.preprocess import Preprocess
 from models.polytuplet import PolytupletModel
-
-# Pickle
-import pickle
 
 # Tuning
 import keras_tuner as kt
 
+# Get system arguments
 model_name_map = {
 	"albert": 0,
 	"distilbert": 1,
 	"roberta": 2
 }
-
 MODEL_INDEX = model_name_map[sys.argv[1]]
+USE_MIXED = sys.argv[2] == "mixed"
 
-model = PolytupletModel()
+# Ensure path exists
+if not os.path.exists("dataset/processed"):
+	os.makedirs("dataset/processed")
 
-use_mixed = {"mixed": "mixed", "sorted": ""}[sys.argv[2]]
+# Load cleaned data
+df = pd.read_csv("dataset/cleaned/dev.csv")
+print(df.head())
 
-with open(f"model_{MODEL_INDEX}_datasets.pkl", "rb") as f:
-	datasets = pickle.load(f)
-	train_data = datasets["train"]
-	val_data = datasets[f"{use_mixed}_val"]
+# Preprocess and save dataset-ready tuples for each model
+for model_index in range(3):
+	print(model_index)
+
+	# Load preprocessor
+	preprocessor = Preprocess(df=df, model_index=model_index)
+
+	# Generate dataset-ready tuples
+	train_data, val_data = preprocessor.get_datasets(mixed=USE_MIXED)
+
+model = PolytupletModel(preprocessor.CONTEXT_LEN, preprocessor.RESULT_LEN)
 
 model.tune_hyperparams(
   train_data=train_data,
