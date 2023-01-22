@@ -17,6 +17,9 @@ import sentencepiece as spm
 from preprocess.preprocess import Preprocess
 from models.polytuplet import PolytupletModel
 
+# Patch
+from mock import patch
+
 # Tuning
 import keras_tuner as kt
 

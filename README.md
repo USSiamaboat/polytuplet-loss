@@ -12,11 +12,9 @@ Jeffrey Lu, Ivan Rodriguez. 2022.
 |--- dataset
     |--- raw_data
     |--- cleaned
-    |--- processed
 |--- preprocess
     |--- preprocess.py
     |--- run_cleaning.py
-    |--- run_preprocess.py
 |--- models
 |--- trainers
 |--- results
@@ -28,20 +26,20 @@ Text data is minimally cleaned before being reshaped and tokenized appropriately
 
 Data is either mixed or unmixed. Mixed data preserves the ordering of answers in the raw data. Unmixed data minimally reorders answers such that the correct answer is always presented last. Both mixed and unmixed data is generated for each configuration.
 
-Cleaning and the other preprocessing can be completed by executing the following commands in order:
+Cleaning can be completed by executing the following command:
 
 ```
 python preprocess/run_cleaning.py
-python preprocess/run_preprocess.py
 ```
+
+Final preprocessing is completed by the trainer.
 
 ## Pretrained Models
 
 Our pretrained models are from [Huggingface Transformers](https://huggingface.co/transformers/v3.3.1/pretrained_models.html). We used the following models:
-- ALBERT (albert-large-v2)
+- ALBERT (albert-xxlarge-v2)
 - DistilBert (distilbert-base-cased)
-- RoBERTa (distilroberta-base)
-- Bart (facebook/bart-base)
+- RoBERTa (roberta-large)
 
 ## Training
 
