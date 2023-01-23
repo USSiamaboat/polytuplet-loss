@@ -41,12 +41,12 @@ if os.name == 'nt':
 else:
 	os.system('clear')
 
-print("="*20)
+print("="*40)
 print("Tuner Config")
-print("="*20)
+print("="*40)
 print(f"Model Information\n\tBaseline Arch.: {IS_BASELINE}\n\tModel Name: {sys.argv[2]}\n\tIndex: {MODEL_INDEX}\n")
 print(f"Data Information\n\tMixing: {USE_MIXED}")
-print("="*20)
+print("="*40)
 
 # Ensure path exists
 if not os.path.exists("dataset/processed"):
