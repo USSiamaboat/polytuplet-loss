@@ -74,9 +74,9 @@ print("Preprocessing complete")
 
 print("Building model")
 if IS_BASELINE:
-	model = BaselineModel(preprocessor.RESULT_LEN)
+	model = BaselineModel(preprocessor.RESULT_LEN, model_index=MODEL_INDEX)
 else:
-	model = PolytupletModel(preprocessor.CONTEXT_LEN, preprocessor.RESULT_LEN)
+	model = PolytupletModel(preprocessor.CONTEXT_LEN, preprocessor.RESULT_LEN, model_index=MODEL_INDEX)
 
 if IS_BASELINE:
 	model.tune_hyperparams(
