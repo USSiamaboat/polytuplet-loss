@@ -35,7 +35,7 @@ Final preprocessing is completed by the trainer.
 
 ## Pretrained Models
 
-Our pretrained models are from [Huggingface Transformers](https://huggingface.co/transformers/v3.3.1/pretrained_models.html). We used the following models:
+Our pretrained models are from [Huggingface Transformers](https://huggingface.co/models). We used the following models:
 - ALBERT (albert-xxlarge-v2)
 - RoBERTa (roberta-large)
 - DistilBert (distilbert-base-cased)
