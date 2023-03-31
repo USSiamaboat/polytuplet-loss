@@ -1,4 +1,4 @@
-# A Reverse Approach to Solving Reading Comprehension and Logical Reasoning Tasks
+# A Reverse Approach to Training Reading Comprehension and Logical Reasoning Models
 
 (INCOMPLETE)
 
