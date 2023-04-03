@@ -1,10 +1,8 @@
-# A Reverse Approach to Training Reading Comprehension and Logical Reasoning Models
-
-(INCOMPLETE)
+# Polytuplet Loss: A Reverse Approach to Training Reading Comprehension and Logical Reasoning Models
 
 Jeffrey Lu, Ivan Rodriguez. 2023.
 
-[Paper Link](https://link.com)
+[Paper Link Pending]
 
 ## Project Structure
 
@@ -36,9 +34,10 @@ Final preprocessing is completed by the trainer.
 ## Pretrained Models
 
 Our pretrained models are from [Huggingface Transformers](https://huggingface.co/models). We used the following models:
-- ALBERT (albert-xxlarge-v2)
+- ALBERT (albert-base-v2, albert-xxlarge-v2)
 - RoBERTa (roberta-large)
-- DistilBert (distilbert-base-cased)
+- BERT (bert-base-uncased)
+- DistilBert (distilbert-base-uncased)
 
 ## Training
 
