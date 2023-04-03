@@ -39,9 +39,11 @@ Our pretrained models are from [Huggingface Transformers](https://huggingface.co
 - BERT (bert-base-uncased)
 - DistilBert (distilbert-base-uncased)
 
+Note that BERT training was completed in Google Colaboratory, and is therefore not covered in this repository. BERT training and tuning can be easily added by importing and configuring the BERT model from Huggingface using the same method that all the other models were imported and configured.
+
 ## Training
 
-Our training was completed on the TPU configuration available in Google Colab(8 TPU v2) and in the TPU v3-8 VMs available from the Google TPU Research Cloud (TRC) program. This codebase may be easily adjusted to run on non-TPU machines.
+Our training was completed on the TPU configuration available in Google Colab (8 TPU v2) and in the TPU v3-8 VMs available from the Google TPU Research Cloud (TRC) program. This codebase may be easily adjusted to run on non-TPU machines.
 
 Our results were extracted directly from the tuner. The tuner can be run using the following command, replacing items in brackets with the appropriate choices:
 
