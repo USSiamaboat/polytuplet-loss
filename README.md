@@ -2,9 +2,9 @@
 
 Jeffrey Lu, Ivan Rodriguez. 2023.
 
-[Paper Link](https://arxiv.org/abs/2304.01046)
+[ArXiv Paper Link](https://arxiv.org/abs/2304.01046)
 
-DOI Pending
+DOI: https://doi.org/10.48550/arXiv.2304.01046
 
 ## Project Structure
 
