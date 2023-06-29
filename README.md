@@ -1,4 +1,4 @@
-# Polytuplet Loss: A Reverse Approach to Training Reading Comprehension and Logical Reasoning Models
+# Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss
 
 Jeffrey Lu, Ivan Rodriguez. 2023.
 
@@ -23,7 +23,7 @@ README.md
 ## Preprocessing
 Text data is minimally cleaned before being reshaped and tokenized appropriately for the various pretrained models.
 
-Data is either mixed or unmixed. Mixed data preserves the ordering of answers in the raw data. Unmixed data minimally reorders answers such that the correct answer is always presented last. Both mixed and unmixed data is generated for each configuration.
+Data is either mixed or unmixed. Mixed data preserves the ordering of answers in the raw data. Unmixed data minimally reorders answers such that the correct answer is always presented last. Both mixed and unmixed data are generated for each configuration.
 
 Cleaning can be completed by executing the following command:
 
